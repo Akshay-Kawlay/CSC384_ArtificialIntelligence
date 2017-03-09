@@ -1,0 +1,18 @@
+1. We need to first understand the limitations of manhattan distance heuristic in order to write an alternate heuristic that improves
+on the manhattan distance heuristics
+
+2. Manhattan Limitation: In calculating the manhattan distance we make an assumption that many boxes can be stored at one location which
+may not be the case and we ignore the position of obstacles. Hence there may be an instance where a non-optimal state is chosen over a 
+more promising one. We thus can have more accuracy if we took into account one to one mapping instead of many to one mapping between boxes and
+locations 
+
+3. The alteration described in 2. boils down to a popular problem of "minimum matching" which can be solved using hungarian algorithm.
+We start with a matrix where the rows contain the manhattan_distance heuristic values of a box from the different locations. So it's a
+#boxes(rows) x #storage_locations(columns) martrix. Also, the manhattan_distance between a box and a location that it is not allowed in
+is taken as infinity
+
+4. Using the hungarian algorithm, we will find the minimum sum of manhattan distances between individual boxes and individual locations
+in a one to one mapping format for that particular sokobanState/search_node. This minimum sum will be the alternate heuristic value
+
+5. This alternate heuristic is an improvement on the previous manhattan_distance heuristic because it will prune the states that give a
+false hope of reaching to the goal_state as in reality only one box can be stored at one location
