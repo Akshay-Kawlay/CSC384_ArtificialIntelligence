@@ -2,7 +2,7 @@
 
 Commands to run the code:
 
-A1 (search-- sokoban)
+A1 (Heuristic search-- sokoban)
   
     $python3 test_script.py
   
